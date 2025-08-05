@@ -1,19 +1,47 @@
 "use client";
-
-import React from "react";
-import useLogin from "../hooks/useLogin";
 import PrimaryBtn from "@/components/buttons/PrimaryBtn";
 import PasswordField from "@/components/forms/PasswordField";
 import PhoneField from "@/components/forms/PhoneField";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
-const Page: React.FC = () => {
-  const { formData, updateForm, handleSubmit, loading } = useLogin();
-  const isSaveDisabled = false;
+const CredentialsInput: React.FC = () => {
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const { replace } = useRouter();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    updateForm(name as keyof typeof formData, value);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const dummyUser = {
+      phoneNumber: "01234567890",
+      password: "password123",
+    };
+
+    if (
+      formData.phoneNumber === dummyUser.phoneNumber &&
+      formData.password === dummyUser.password
+    ) {
+      toast.success("Successfully logged in");
+      replace("/dashboard");
+    } else {
+      toast.error("Invalid phone number or password");
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -28,7 +56,6 @@ const Page: React.FC = () => {
               onChange={handleChange}
               required
             />
-
             <PasswordField
               label="Password"
               id="password"
@@ -38,19 +65,12 @@ const Page: React.FC = () => {
               onChange={handleChange}
               required
             />
-
-            <PrimaryBtn
-              disabled={isSaveDisabled}
-              loading={loading}
-              content="Sign In"
-            />
+            <PrimaryBtn loading={loading} content="Sign In" />
           </div>
         </form>
       </div>
     </div>
   );
-
-  
 };
 
-export default Page;
+export default CredentialsInput;

@@ -11,7 +11,7 @@ import './sidebar.css';
 const SidebarPage: React.FC = () => {
   const { collapsed, setCollapsed } = useSidebarContext();
   return (
-    <div>
+    <div className="">
       <BaseSidebar
         toggled={collapsed}
         breakPoint="md"
@@ -21,7 +21,7 @@ const SidebarPage: React.FC = () => {
         width={"256px"}
         style={{ borderRightWidth: 0, height: "100vh"}}
       >
-        <div className="md:px-12 px-4 mb-4">
+        {/* <div className="md:px-12 px-4 mb-4">
           <Image
             className="mt-4"
             src="/logoz.png"
@@ -29,7 +29,7 @@ const SidebarPage: React.FC = () => {
             width={150}
             height={100}
           />
-        </div>
+        </div> */}
         <div className="flex flex-col justify-between ">
           <Menu
             className="gap-4 "

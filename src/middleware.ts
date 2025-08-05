@@ -9,7 +9,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (isStaticFile(pathname)) return;
 
-  const isLogged = hasValidRefreshToken(request);
+  const isLogged =
+    hasValidRefreshToken(request) || process.env.NODE_ENV === "development";
   const isGuestRoute = GuestRoutes.includes(pathname);
   const isBaseRoute = pathname == "/";
 
