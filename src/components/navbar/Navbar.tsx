@@ -1,19 +1,18 @@
 "use client";
 
-import React, {useState } from "react";
+import React, { useState } from "react";
 import {
   RiLogoutCircleRLine,
   RiMenu5Fill,
 } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import ClickOutsideDropdown from "../ClickOutsideDropdown";
-import { logout } from "./actions/LogoutActions";
-import {  User } from "@heroui/react";
+import { User } from "@heroui/react";
 import styles from "./App.module.css";
 import { useSidebarContext } from "@/app/(auth)/ProSidebarLayout";
 import { usePageTitle } from "../layout/sidebar/hooks/usePageTitle";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -27,10 +26,14 @@ const Navbar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleLogoutClick = async () => {
-    await logout();
+  const handleLogoutClick = () => {
+    // Delete the cookie by setting it to expired
+    document.cookie = "logged_id=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
     toast.success("Logout successful");
-    push("/login");
+    setTimeout(() => {
+      push("/login");
+    }, 100);
   };
 
   return (
@@ -44,7 +47,7 @@ const Navbar = () => {
 
       <div className="flex">
         <span className="text-gray-600 md:text-xl text-nowrap text-sm font-bold md:p-7">
-        {pageTitle}
+          {pageTitle}
         </span>
       </div>
 
@@ -77,7 +80,6 @@ const Navbar = () => {
             className="dropdown-wrapper"
           >
             <div className="absolute right-0 mt-2 w-60 bg-white shadow-lg rounded-md p-2 transition-opacity duration-300 ease-in-out">
-         
               <button onClick={handleLogoutClick} className={profileItem}>
                 <RiLogoutCircleRLine /> Logout
               </button>

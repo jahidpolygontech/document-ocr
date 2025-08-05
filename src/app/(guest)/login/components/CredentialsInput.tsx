@@ -25,22 +25,22 @@ const CredentialsInput: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    const dummyUser = {phoneNumber: "01234567890",password: "password123"};
 
-    const dummyUser = {
-      phoneNumber: "01234567890",
-      password: "password123",
-    };
-
-    if (
-      formData.phoneNumber === dummyUser.phoneNumber &&
-      formData.password === dummyUser.password
-    ) {
+    if (formData.phoneNumber === dummyUser.phoneNumber &&formData.password === dummyUser.password) {
+      const dummyRefreshToken = { refreshToken: "dummyToken123" };
+      const expires = new Date(Date.now() + 60 * 60 * 1000).toUTCString();
+    
+      document.cookie = `logged_id=${dummyRefreshToken.refreshToken}; path=/; expires=${expires}`;
+    
       toast.success("Successfully logged in");
       replace("/dashboard");
-    } else {
+    } 
+    else {
       toast.error("Invalid phone number or password");
       setLoading(false);
     }
+    
   };
 
   return (
