@@ -13,7 +13,7 @@ const poppins = Poppins({
 
 
 export const metadata: Metadata = {
-  title: "Zaytoon Business Solutions",
+  title: "Document OCR Portal",
   description: "",
 };
 

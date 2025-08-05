@@ -35,7 +35,7 @@ export default function getMenus(): MenuType[] {
     {
       key: "log",
       baseUrl: "/log",
-      label: "log",
+      label: "Log",
       icon: <BsJournalCheck />,
       canAccess: true,
     },
