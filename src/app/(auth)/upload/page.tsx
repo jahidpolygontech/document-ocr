@@ -77,9 +77,6 @@ const UploadPage = () => {
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
       const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   
-      // Debug logs for environment variables
-      console.log("API_BASE_URL:", API_BASE_URL);
-      console.log("API_KEY:", API_KEY);
   
       if (!API_BASE_URL || !API_KEY) {
         throw new Error("API_BASE_URL or API_KEY is not defined in environment variables.");
