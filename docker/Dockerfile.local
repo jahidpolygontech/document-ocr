@@ -1,0 +1,11 @@
+FROM node:20
+
+ARG APP_TIMEZONE
+
+RUN apt-get update && apt-get install -y tzdata
+
+WORKDIR /opt/app
+
+COPY . .
+
+CMD ["npm", "run", "dev"]

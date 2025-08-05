@@ -1,0 +1,1 @@
+export type ServiceOpenType = "SIMPLE_MICROSITE" | "SSO_LOGIN" | "API_INTEGRATION";
