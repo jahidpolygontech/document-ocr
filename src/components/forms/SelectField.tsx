@@ -25,7 +25,7 @@ function SelectField<T extends Key>({
   disabled,
 }: Readonly<Props<T>>) {
   return (
-    <div className="">
+    <div>
       <label htmlFor={id} className="block mb-2">
         {label} {required ? <span className="text-[#D9214E]">*</span> : ""}
       </label>
