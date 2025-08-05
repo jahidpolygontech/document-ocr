@@ -31,7 +31,7 @@ function SelectField<T extends Key>({
       </label>
       <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
         <Autocomplete
-          className="max-w-xs"
+          className="w-full"
           defaultItems={items}
           placeholder="Select an option"
           variant="flat"
