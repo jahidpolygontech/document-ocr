@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { uploadDocument } from "@/services/uploadService";
+import { useRouter } from "next/navigation";
 
 export interface FormState {
   incomeProofDocFile: File | null;
@@ -33,6 +34,7 @@ const initialFormState: FormState = {
 export const useUploadForm = () => {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleChange = (field: keyof FormState, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -73,8 +75,9 @@ export const useUploadForm = () => {
 
     try {
       const referenceId = await uploadDocument(formData);
-      toast.success(`Document uploaded successfully`);
+      toast.success(`Document uploaded successfully with Reference ID: ${referenceId}`);
       setFormData(initialFormState); // Clear form fields
+      router.push(`/document?refId=${referenceId}`);
     } catch (error: any) {
       toast.error(error.message || "Failed to upload document.");
     } finally {
