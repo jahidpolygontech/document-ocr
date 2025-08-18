@@ -109,6 +109,7 @@ const DocumentFetcher = () => {
       {error && <p className="text-red-500 mt-4 font-medium">{error}</p>}
 
       {data && (
+        // inof
         <div className="mt-8">
           <InfoTable title="Document Information" data={data} />
           <InfoTable
