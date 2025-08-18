@@ -73,7 +73,7 @@ export const useUploadForm = () => {
 
     try {
       const referenceId = await uploadDocument(formData);
-      toast.success(`Document uploaded successfully with Reference ID: ${referenceId}`);
+      toast.success(`Document uploaded successfully`);
       setFormData(initialFormState); // Clear form fields
     } catch (error: any) {
       toast.error(error.message || "Failed to upload document.");

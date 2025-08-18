@@ -34,7 +34,7 @@ const CredentialsInput: React.FC = () => {
       document.cookie = `logged_id=${dummyRefreshToken.refreshToken}; path=/; expires=${expires}`;
     
       toast.success("Successfully logged in");
-      replace("/dashboard");
+      replace("/upload");
     } 
     else {
       toast.error("Invalid phone number or password");

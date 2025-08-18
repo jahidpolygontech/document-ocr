@@ -1,9 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { BsJournalCheck, BsUpload } from "react-icons/bs";
-import { GoHomeFill } from "react-icons/go";
-
+import { BsUpload, BsFileEarmarkText } from "react-icons/bs";
 
 export interface MenuType {
   key: string;
@@ -16,31 +14,35 @@ export interface MenuType {
 }
 
 export default function getMenus(): MenuType[] {
-
   return [
-    {
-      key: "dashboard",
-      baseUrl: "/dashboard",
-      label: "Dashboard",
-      icon: <GoHomeFill />,
-      canAccess: true,
-    },
+    // {
+    //   key: "dashboard",
+    //   baseUrl: "/dashboard",
+    //   label: "Dashboard",
+    //   icon: <GoHomeFill />,
+    //   canAccess: true,
+    // },
     {
       key: "upload",
       baseUrl: "/upload",
-      label: "Upload",
-      icon: <BsUpload />, 
+      label: "Upload Documents",
+      icon: <BsUpload />,
       canAccess: true,
     },
     {
-      key: "log",
-      baseUrl: "/log",
-      label: "Log",
-      icon: <BsJournalCheck />,
+      key: "document",
+      baseUrl: "/document",
+      label: "Verify Document",
+      icon: <BsFileEarmarkText />,
       canAccess: true,
     },
-   
-    
+
+    // {
+    //   key: "log",
+    //   baseUrl: "/log",
+    //   label: "Log",
+    //   icon: <BsJournalCheck />,
+    //   canAccess: true,
+    // },
   ];
 }
-

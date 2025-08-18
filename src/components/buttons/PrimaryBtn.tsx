@@ -14,8 +14,10 @@ const PrimaryBtn: React.FC<Props> = ({ disabled, loading, content }) => {
       className={classNames(
         "flex justify-center text-white py-2 px-6 rounded-lg font-bold",
         {
-          "bg-gradient-to-tr from-[#c1cfb6] disabled-start to-[#b4d899] disabled-end cursor-not-allowed": disabled || loading,
-          "bg-gradient-to-r from-[#7eb456] to-[#7eb456]": !disabled && !loading,
+          "bg-gradient-to-tr from-cyan-300 to-cyan-400 cursor-not-allowed opacity-60":
+            disabled || loading,
+          "bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700":
+            !disabled && !loading,
         }
       )}
     >

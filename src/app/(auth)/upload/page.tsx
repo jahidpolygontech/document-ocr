@@ -25,7 +25,6 @@ const UploadPage = () => {
 
   return (
     <div className="container mx-auto p-4 border mt-4 rounded-xl">
-      <h1 className="text-2xl font-bold mb-4">Upload Document</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <DocumentInput
           id="incomeProofDocFile"
@@ -68,7 +67,7 @@ const UploadPage = () => {
           className={`px-4 py-2 rounded text-white font-semibold ${
             loading
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700"
+              : "bg-cyan-600 hover:bg-cyan-700"
           }`}
         >
           {loading ? "Uploading..." : "Upload Document"}
